@@ -4,15 +4,13 @@
  */
 
 function isNumeric(str) {
-  if (typeof str === 'number') {
-    return true
-  } else {
-    return false
-  }
+  // Преобразуем строку в число и проверяем, не является ли результат NaN
+  return !isNaN(parseFloat(str)) && isFinite(str);
 }
 
-// console.log(isNumeric("123")) // Ожидаемый результат: true
+
+console.log(isNumeric("123")) // Ожидаемый результат: true
 // console.log(isNumeric("12.3")) // Ожидаемый результат: true
-// console.log(isNumeric("123abc")) // Ожидаемый результат: false
-// console.log(isNumeric("abc")) // Ожидаемый результат: false
-// console.log(isNumeric(" ")) // Ожидаемый результат: false
+console.log(isNumeric("123abc")) // Ожидаемый результат: false
+console.log(isNumeric("abc")) // Ожидаемый результат: false
+ console.log(isNumeric(" ")) // Ожидаемый результат: false
