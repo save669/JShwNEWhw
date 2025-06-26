@@ -23,3 +23,14 @@ function truncate(str, maxLength) {
 
 console.log(truncate("Вот, что мне действительно нравится в этом", 20));
 console.log(truncate("Короткая строка", 20));
+
+
+
+
+
+
+
+
+
+
+
