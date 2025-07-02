@@ -30,7 +30,19 @@ const model = {
     view.renderMovies(this.movies)
   },
   // your code
+  deleteMovie(movieID) {
+   
+    
+    this.movies = this.movies.filter((movie) => {
+      return movie.id !== +movieID
+      
+    })
+   
+     view.renderMovies(this.movies)
+  }
 }
+
+
 
 const view = {
   init() {
@@ -51,6 +63,8 @@ const view = {
     })
 
     // your code
+
+    
   },
   renderMovies(movies) {
     const list = document.querySelector('.list')
@@ -67,6 +81,20 @@ const view = {
     }
 
     list.innerHTML = moviesHTML
+
+    const buttons = document.querySelectorAll('.delete-button')
+    console.log(buttons);
+
+    for (const button of buttons) {
+      button.addEventListener('click', function () {
+        const parent = button.parentElement;
+        const id = parent.getAttribute('id')
+        console.log(id);
+        
+        controller.deleteMovie(id)
+
+      })
+    }
   },
   displayMessage(message, isError = false) {
     const messageBox = document.querySelector('.message-box')
@@ -90,7 +118,10 @@ const controller = {
       view.displayMessage('Заполните все поля!', true)
     }
   },
-  // your code
+  deleteMovie(id) {
+model.deleteMovie(id)
+    view.displayMessage('Фильм успешно удалён!')
+}
 }
 
 function init() {
@@ -98,3 +129,8 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init)
+// 3. Реализовать метод deleteMovie в объекте controller:
+// - метод должен принимать id фильма
+//   - метод должен передать id фильма в метод deleteMovie объекта model
+//     - метод должен отобразить сообщение "Фильм успешно удалён!" в message - box
+//       */
